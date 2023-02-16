@@ -4,4 +4,4 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.example.recorder.R
 
-class MainActivity : AppCompatActivity(R.layout.activity_main)
+class AuthActivity : AppCompatActivity(R.layout.auth_main)
