@@ -13,4 +13,7 @@
     <!--    Common strings    -->
     <string name="email_input">Enter email</string>
     <string name="password_input">Enter password</string>
+    <string name="last_name_input">Enter last name</string>
+    <string name="first_name_input">Enter first name</string>
+    <string name="repeat_password_input">Repeat password</string>
 </resources>

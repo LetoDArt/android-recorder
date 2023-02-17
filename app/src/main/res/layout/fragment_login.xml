@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:hint="@string/email_input"
             style="@style/TextInputLayout"
-            app:startIconDrawable="@drawable/user_18"
+            app:startIconDrawable="@drawable/email_18"
             android:layout_marginBottom="20dp"
             android:layout_height="50dp">
 
