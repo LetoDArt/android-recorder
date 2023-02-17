@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">recorder</string>
-    <string name="hello_login">Hello! It is Login</string>
     <string name="hello_signup">Hello! It is Signup</string>
+
+    <!--    Login strings    -->
+    <string name="login_header">Log In</string>
+    <string name="login_button">Login</string>
+
+    <!--    Signup strings    -->
+    <string name="signup_header">Sign Up</string>
+    <string name="signup_button">Signup</string>
+
+    <!--    Common strings    -->
+    <string name="email_input">Enter email</string>
+    <string name="password_input">Enter password</string>
 </resources>

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Recorder" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -12,5 +12,38 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="FragmentHeader">
+        <item name="android:textColor">@color/purple_200</item>
+    </style>
+
+    <style name="EditTextIcon" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:fontFamily">@font/patrick_hand_regular</item>
+        <item name="android:background">@drawable/input_icon_bg_dark</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintTextColor">@color/purple_200</item>
+        <item name="startIconTint">@color/purple_200</item>
+        <item name="passwordToggleTint">@color/purple_200</item>
+        <item name="android:textColorHint">@color/purple_200</item>
+    </style>
+
+    <style name="OrdinaryButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/purple_200</item>
+        <item name="android:fontFamily">@font/patrick_hand_regular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TransparentButtonSmall" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="android:fontFamily">@font/patrick_hand_regular</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 </resources>
