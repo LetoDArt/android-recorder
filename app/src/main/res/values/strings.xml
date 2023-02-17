@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">recorder</string>
+    <string name="app_name">Sign recognizer</string>
     <string name="hello_signup">Hello! It is Signup</string>
 
     <!--    Login strings    -->

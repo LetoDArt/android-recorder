@@ -2,6 +2,7 @@ package com.example.recorder.ui.Signup
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -14,6 +15,9 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val app = view.context as AppCompatActivity
+        app.supportActionBar?.hide()
 
         binding.redirectToLogInBtn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.SignupToLogin)
