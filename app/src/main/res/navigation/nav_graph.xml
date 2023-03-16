@@ -15,6 +15,11 @@
             app:destination="@id/signupFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/LoginToMain"
+            app:destination="@id/mainWindowFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -27,4 +32,9 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
+    <fragment
+        android:id="@+id/mainWindowFragment"
+        android:name="com.example.recorder.ui.MainWindow.MainWindowFragment"
+        android:label="fragment_main_window"
+        tools:layout="@layout/fragment_main_window" />
 </navigation>
