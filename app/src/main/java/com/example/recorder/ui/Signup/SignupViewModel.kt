@@ -51,7 +51,7 @@ class SignupViewModel(application: Application): AndroidViewModel(application) {
             }.onSuccess {
                 signupSuccess.trySendBlocking(Unit)
             }.onFailure {
-                Timber.tag("Attempt").d(it)
+                Timber.tag("Attempt").e(it)
             }
         }
     }

@@ -17,7 +17,7 @@ class AuthInterceptor: Interceptor {
         return newBuilder()
             .apply {
                 val token = TokenStorage.accessToken
-                if (token != null) {
+                if (token != "") {
                     header(authHeaderName, token.withBearer())
                 }
             }

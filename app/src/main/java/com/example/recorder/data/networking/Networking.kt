@@ -1,7 +1,8 @@
 package com.example.recorder.data.networking
 
-import android.content.Context
 import com.example.recorder.data.auth.AuthApi
+import com.example.recorder.data.auth.AuthRepository
+import com.example.recorder.data.auth.TokenStorage
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,7 +18,7 @@ object Networking {
     val authApi: AuthApi
         get() = retrofit?.create() ?: error("retrofit is not initialized")
 
-    fun init(context: Context) {
+    fun init() {
         okhttpClient = OkHttpClient.Builder()
             .addNetworkInterceptor(
                 HttpLoggingInterceptor {
@@ -26,10 +27,11 @@ object Networking {
                     .setLevel(HttpLoggingInterceptor.Level.BODY)
             )
             .addNetworkInterceptor(AuthInterceptor())
+            .addInterceptor(AuthorizationFailedInterceptor(TokenStorage, AuthRepository()))
             .build()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.31.237:8000")
+            .baseUrl("http://192.168.72.48:8000")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(okhttpClient!!)
             .build()

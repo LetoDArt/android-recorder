@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="20dp"
-                android:hint="@string/first_name_input"
+                android:hint="@string/username_input"
                 app:startIconDrawable="@drawable/user_18">
 
                 <com.google.android.material.textfield.TextInputEditText
