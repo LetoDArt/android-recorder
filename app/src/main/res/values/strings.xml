@@ -1,5 +1,35 @@
 <resources>
-    <string name="app_name">recorder</string>
-    <string name="hello_login">Hello! It is Login</string>
-    <string name="hello_signup">Hello! It is Signup</string>
+    <string name="app_name">Sign recognizer</string>
+    <string name="logo_description">Logo</string>
+
+    <!--    Loader strings    -->
+    <string name="loader_title">Sign&#xA;&#xD;Recognizer</string>
+
+    <!--    Login strings    -->
+    <string name="login_header">Log In</string>
+    <string name="login_button">Login</string>
+
+    <!--    Signup strings    -->
+    <string name="signup_header">Sign Up</string>
+    <string name="signup_button">Signup</string>
+
+    <!--    Main window strings    -->
+    <string name="main_window_title">Main window</string>
+
+    <!--    Common strings    -->
+    <string name="email_input">Enter email</string>
+    <string name="password_input">Enter password</string>
+    <string name="username_input">Enter username</string>
+    <string name="last_name_input">Enter last name</string>
+    <string name="first_name_input">Enter first name</string>
+    <string name="repeat_password_input">Repeat password</string>
+
+    <!--    AUTH-error strings    -->
+    <string name="non_valid_name">Name mast be entered</string>
+    <string name="non_valid_email">Email is not valid</string>
+    <string name="password_do_not_coincide">Passwords do not coincide</string>
+    <string name="non_valid_password">
+        Password is not valid. Password mast have 8 characters or more
+    </string>
+    <string name="logout_button">Logout</string>
 </resources>
