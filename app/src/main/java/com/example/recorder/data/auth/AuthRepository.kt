@@ -4,7 +4,9 @@ import com.example.recorder.data.auth.model.*
 import com.example.recorder.data.networking.Networking
 
 class AuthRepository {
-    fun logout() {
+    suspend fun logout() {
+        Networking.authApi.logoutUser(LogoutRequest(TokenStorage.refreshToken))
+
         TokenStorage.saveAccessToken("")
         TokenStorage.saveRefreshToken("")
     }

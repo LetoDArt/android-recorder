@@ -13,6 +13,9 @@
     <string name="signup_header">Sign Up</string>
     <string name="signup_button">Signup</string>
 
+    <!--    Main window strings    -->
+    <string name="main_window_title">Main window</string>
+
     <!--    Common strings    -->
     <string name="email_input">Enter email</string>
     <string name="password_input">Enter password</string>
@@ -28,5 +31,5 @@
     <string name="non_valid_password">
         Password is not valid. Password mast have 8 characters or more
     </string>
-    <string name="Logout_button">Logout</string>
+    <string name="logout_button">Logout</string>
 </resources>

@@ -31,7 +31,7 @@ object Networking {
             .build()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.72.48:8000")
+            .baseUrl("http://192.168.31.190:8000")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(okhttpClient!!)
             .build()
