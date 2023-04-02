@@ -1,25 +1,17 @@
 package com.example.recorder.ui.MainWindow
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.recorder.R
-import com.example.recorder.data.auth.TokenStorage
-import com.example.recorder.data.websocket.SocketListener
 import com.example.recorder.databinding.FragmentMainWindowBinding
 import com.example.recorder.utils.launchAndCollectIn
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.WebSocket
 
 
@@ -38,27 +30,13 @@ class MainWindowFragment : Fragment(R.layout.fragment_main_window) {
         val app = view.context as AppCompatActivity
         app.supportActionBar?.show()
 
-        val client = OkHttpClient()
-        val req: Request = Request.Builder().url("ws://192.168.31.237:8000/ws/stream/${mainWindowViewModel.obtainUser()}/?token=${TokenStorage.accessToken}").build()
-        val listener = SocketListener(socketViewModel)
+        val ws: WebSocket = mainWindowViewModel.connectSocket(socketViewModel)
 
-        val ws: WebSocket = client.newWebSocket(req, listener)
-
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.options, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.logout_button -> {
-                        mainWindowViewModel.logout()
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        menuHost.addMenuProvider(
+            MainWindowMenu(mainWindowViewModel),
+            viewLifecycleOwner,
+            Lifecycle.State.RESUMED
+        )
 
         mainWindowViewModel.userFlow.launchAndCollectIn(viewLifecycleOwner) { user ->
             user?.user_name.let {
