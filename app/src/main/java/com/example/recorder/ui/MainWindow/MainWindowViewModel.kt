@@ -33,6 +33,10 @@ class MainWindowViewModel(application: Application): AndroidViewModel(applicatio
         user.value = UserStore.currentUser
     }
 
+    fun obtainUser(): String {
+        return UserStore.currentUser?.user_name!!
+    }
+
     fun logout() {
         viewModelScope.launch {
             runCatching {

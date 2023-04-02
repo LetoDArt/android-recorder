@@ -14,13 +14,19 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.recorder.R
+import com.example.recorder.data.auth.TokenStorage
+import com.example.recorder.data.websocket.SocketListener
 import com.example.recorder.databinding.FragmentMainWindowBinding
 import com.example.recorder.utils.launchAndCollectIn
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.WebSocket
 
 
 class MainWindowFragment : Fragment(R.layout.fragment_main_window) {
 
     private val mainWindowViewModel: MainWindowViewModel by viewModels()
+    private val socketViewModel: SocketViewModel by viewModels()
     private val binding by viewBinding(FragmentMainWindowBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +37,12 @@ class MainWindowFragment : Fragment(R.layout.fragment_main_window) {
         val menuHost: MenuHost = requireActivity()
         val app = view.context as AppCompatActivity
         app.supportActionBar?.show()
+
+        val client = OkHttpClient()
+        val req: Request = Request.Builder().url("ws://192.168.31.237:8000/ws/stream/${mainWindowViewModel.obtainUser()}/?token=${TokenStorage.accessToken}").build()
+        val listener = SocketListener(socketViewModel)
+
+        val ws: WebSocket = client.newWebSocket(req, listener)
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -56,6 +68,15 @@ class MainWindowFragment : Fragment(R.layout.fragment_main_window) {
 
         mainWindowViewModel.navigateFlow.launchAndCollectIn(viewLifecycleOwner) { fragment ->
             findNavController().navigate(fragment)
+        }
+
+        binding.sendNameBtn.setOnClickListener {
+            val message = "${mainWindowViewModel.obtainUser()}: ${binding.nameInput.text}"
+            ws.send("{ \"message\": \"${message}\" }")
+        }
+
+        socketViewModel.messageFlow.launchAndCollectIn(viewLifecycleOwner) { message ->
+            binding.textView2.text = message
         }
     }
 }
