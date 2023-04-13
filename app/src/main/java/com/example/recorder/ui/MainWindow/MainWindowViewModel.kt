@@ -61,7 +61,7 @@ class MainWindowViewModel(application: Application): AndroidViewModel(applicatio
 
         val req: Request = Request
             .Builder()
-            .url("ws://192.168.31.237:8000/ws/stream/${user}/?token=${token}")
+            .url("ws://192.168.31.104:8000/ws/stream/${user}/?token=${token}")
             .build()
         val listener = SocketListener(viewModel)
 
