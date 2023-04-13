@@ -47,7 +47,7 @@ class MainWindowFragment : Fragment(R.layout.fragment_main_window) {
 
     private lateinit var ws: WebSocket
 
-    private lateinit var context: Context
+    internal lateinit var context: Context
     private lateinit var cameraExecutor: Executor
     private lateinit var imageCapture: ImageCapture
 
