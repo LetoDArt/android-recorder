@@ -25,6 +25,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val app = view.context as AppCompatActivity
         app.supportActionBar?.hide()
 
+        loginViewModel.clearTokens()
+
         binding.redirectToSignUpBtn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.LoginToSignup)
         }

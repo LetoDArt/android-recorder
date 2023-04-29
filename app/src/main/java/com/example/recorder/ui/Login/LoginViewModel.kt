@@ -47,6 +47,14 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun clearTokens() {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.clearTokens()
+            }
+        }
+    }
+
     private fun validateEmail(email: String): Boolean {
         if (!email.isEmailValid()) {
             toastEventChannel.trySendBlocking(R.string.non_valid_email)

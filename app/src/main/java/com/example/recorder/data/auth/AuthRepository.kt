@@ -11,6 +11,11 @@ class AuthRepository {
         TokenStorage.saveRefreshToken("")
     }
 
+    fun clearTokens() {
+        TokenStorage.saveAccessToken("")
+        TokenStorage.saveRefreshToken("")
+    }
+
     suspend fun createNewUser(signupRequest: SignupRequest): SignupResponse  {
         return Networking.authApi.createNewUser(signupRequest)
     }
